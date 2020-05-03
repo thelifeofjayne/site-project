@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'Alien';
+	src: url('./stuff/alien.woff') format('woff');
+}
+
+body {
+	font-family: var(--font);
+}

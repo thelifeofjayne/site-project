@@ -1,0 +1,289 @@
+.file-img > img {
+	pointer-events: none;
+	max-height: 100%;
+}
+.file-img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	pointer-events: none;
+	width: 100%;
+}
+.nothing {
+	margin: auto 0;
+	text-align: center;
+	width: 100%;
+}
+.container {
+	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
+	display: grid;
+	grid-template-rows: 60px 40px auto 25px;
+	overflow: hidden;
+}
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--bg-cl-3);
+	grid-column: 1/-1;
+}
+.sub-header {
+	display: flex;
+	background-color: var(--bg-cl-1);
+	grid-column: 1/-1;
+	overflow-x: auto;
+}
+.dragable,
+.dragable:active {
+	cursor: pointer;
+	background-color: var(--bg-cl-4);
+	border-right: solid 1px var(--bg-cl-1);
+}
+.dragable.active {
+	background-color: var(--bg-cl-4-1);
+}
+.dragable.drag-hovered {
+	background-color: var(--bg-cl-4-1);
+}
+.dragable > div {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 5px;
+}
+.dragable > div:hover {
+	background-color: var(--bg-cl-4-2);
+}
+
+.explorer {
+	background-color: var(--bg-cl-1);
+	grid-column: 1/2;
+	overflow-y: auto;
+	overflow-x: hidden;
+	--ex-line: var(--ex-line-leave);
+}
+.explorer:hover {
+	--ex-line: var(--ex-line-focus);
+}
+.resizer {
+	background-color: var(--bg-cl-1);
+	grid-column: 2/3;
+	cursor: w-resize;
+	display: flex;
+	align-items: flex-end;
+}
+.resizer > div {
+	display: flex;
+}
+.resizer > div > svg {
+	background-color: var(--bg-cl-1);
+	padding: 2px;
+	max-height: 20px;
+	position: relative;
+}
+.line {
+	background-color: var(--bg-cl-2);
+	min-width: 35px;
+	margin-right: 15px;
+	float: left;
+	overflow-x: hidden;
+}
+.editor {
+	display: flex;
+	background-color: var(--bg-cl-2);
+	grid-column: 3/-1;
+	overflow-y: auto;
+}
+.editor > iframe {
+	height: inherit;
+	width: -webkit-fill-available;
+	width: -moz-available;
+	margin: 25px;
+	border-width: 0;
+}
+
+.editor > iframe > #document > html > body {
+	background-color: var(--bg-cl-2);
+}
+
+.line > div {
+	text-align: end;
+}
+.textEditor {
+	user-select: initial;
+	height: 100%;
+	width: 100%;
+	overflow-x: auto;
+}
+.textEditor > div {
+	display: table;
+	max-height: 20px;
+	white-space: nowrap;
+}
+.parent {
+	display: grid;
+	grid-template:
+		'. a' auto
+		'b c' auto/ 1px auto;
+}
+.folder-line {
+	position: relative;
+	grid-area: b;
+	background-color: var(--txt-cl);
+}
+.item-wrapper {
+	grid-area: a;
+	cursor: pointer;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.xd {
+	grid-area: c;
+}
+.item-wrapper:hover,
+.item-wrapper.active {
+	background-color: var(--bg-cl-2);
+}
+.item {
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;
+}
+* {
+	margin: 0;
+	padding: 0;
+	color: var(--txt-cl);
+	/* user-select: none; */
+}
+.footer {
+	background-color: var(--bg-cl-6);
+	grid-column: 1/-1;
+}
+.config {
+	margin-right: 6px;
+	float: right;
+}
+.config > svg {
+	width: 20px;
+	padding: 2px;
+	cursor: pointer;
+}
+.cursor {
+	margin-bottom: -2px;
+	width: 8px;
+	height: 18px;
+	display: inline-block;
+	background-color: var(--crsr);
+}
+::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+::-webkit-scrollbar-track {
+	background: var(--bg-cl-2);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--scrl);
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--scrl-ac);
+}
+::-webkit-scrollbar-corner {
+	background: var(--bg-cl-2);
+}
+.line::-webkit-scrollbar {
+	width: 0;
+	height: 0;
+}
+.editor-sub-header::-webkit-scrollbar {
+	width: 0;
+	height: 6px;
+}
+.op-cl-tooltip {
+	padding: 0;
+}
+.op-cl-tooltip > div {
+	padding: 8px 16px;
+}
+.const {
+	color: var(--vrb);
+}
+.const::before {
+	color: var(--cnst);
+	content: 'const ';
+	white-space: pre;
+}
+.const::after {
+	content: ' = ';
+	white-space: pre;
+}
+.bracket > div {
+	margin-left: 32px;
+}
+.bracket::before {
+	color: var(--brckt);
+	content: '[';
+	grid-column: 1/-1;
+}
+.bracket::after {
+	color: var(--brckt);
+	content: ']';
+	grid-column: 1/-1;
+}
+.bracket > div:not(:last-child) > .brace-wrap::after {
+	content: ',';
+}
+.bracket > div:not(:last-child) > .bracket-wrap::after {
+	content: ',';
+}
+.bracket > div:not(:last-child) > .val::after {
+	content: ',';
+}
+.brace > div:not(:last-child) > .bracket-wrap::after {
+	content: ',';
+}
+.brace > div:not(:last-child) > .brace-wrap::after {
+	content: ',';
+}
+.brace > div:not(:last-child) > .val::after {
+	content: ',';
+}
+.brace > div {
+	margin-left: 35px;
+}
+.brace::before {
+	color: var(--brc);
+	content: '{';
+}
+.brace::after {
+	color: var(--brc);
+	content: '}';
+}
+.key {
+	color: var(--key);
+}
+.key::after {
+	content: ': ';
+	white-space: pre;
+}
+.export::before {
+	color: var(--cnst);
+	content: 'export default ';
+	white-space: pre;
+}
+.export {
+	color: var(--vrb);
+}
+
+.val {
+	color: var(--val);
+}
+.link {
+	text-decoration: underline;
+	cursor: pointer;
+}
+.link:hover {
+	color: var(--white);
+}
